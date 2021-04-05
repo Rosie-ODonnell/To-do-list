@@ -1,3 +1,6 @@
+const addButton = form.querySelector("input [type='submit'");
+const checkButton = document.querySelector("#checkbox");
+const removeButton = ul.querySelector("button");
 
 // background API
 
@@ -18,5 +21,5 @@ check() {
 // remove item from list
 
 removeItem() {
-    
+
 }
