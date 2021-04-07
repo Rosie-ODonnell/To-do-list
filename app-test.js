@@ -18,8 +18,6 @@ const equal = (actual, expected, message) => {
   }
 };
 
-
-
 // Add tasks to a list so that I can keep track of them
 
 test("item is successfully added to list when", () => {
@@ -29,23 +27,19 @@ test("item is successfully added to list when", () => {
   addItem(input);
   let actual = Array.from(document.querySelectorAll("li"));
 
-
-
   equal(actual.length, expectedLength);
   equal(actual[actual.length - 1].querySelector("label").textContent, input);
 });
 
 //Check things off my list so that I can see what I’ve done
 
-// test("item shows checked when checkbox clicked", () => {
-//   let expected = true;
-//   let checkboxInput = document.querySelector("input[type='checkbox']");
-//   check(checkboxInput);
-//   let actual = checkboxInput.checked;
-
-//   equal(actual, true);
-//   equal(item.parentElement.classList.toggle("completed"), true);
-// });
+test("item shows checked when checkbox clicked", (item) => {
+  let checkboxInput = document.querySelector("input[type='checkbox']");
+  checkboxInput.checked = true;
+  let checkedFunction = check(checkboxInput);
+  equal(checkedFunction.checked, true);
+  equal(checkedFunction.parentElement.classList.contains("completed"), true);
+});
 
 //Items deleted off my list when delete button clicked
 
@@ -58,21 +52,20 @@ test("item is successfully added to list when", () => {
 //   equal(actual, expected);
 // });
 
-// test("when item is deleted, length of list decreases by 1", () => {
-//   let expected = Array.from(document.querySelectorAll("li").length - 1);
-//   let listItem = document.querySelector("li");
-//   removeItem(listItem);
-//   let actual = Array.from(document.querySelectorAll("li"));
-//   equal(actual, expected);
-// });
+test("when item is deleted, length of list decreases by 1", () => {
+  let expected = Array.from(document.querySelectorAll("li")).length - 1;
+  let listItem = document.querySelector("li");
+  removeItem(listItem);
+  let actual = Array.from(document.querySelectorAll("li")).length;
+  equal(actual, expected);
+});
 
 //If empty string is passed, no new item is added
-// test("if empty string is passed, no item is added to list", () => {
-//     let input = "";
-//     let expected = Array.from(document.querySelectorAll("li").length);
-//     addItem(input);
-//     let actual = Array.from(document.querySelector("ul"));
+test("if empty string is passed, no item is added to list", () => {
+  let input = "";
+  let expected = Array.from(document.querySelectorAll("li")).length;
+  addItem(input);
+  let actual = Array.from(document.querySelector("ul")).length;
 
-//     equal(actual, expected)
-
-
+  equal(actual, expected);
+});
