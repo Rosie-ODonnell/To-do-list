@@ -18,7 +18,7 @@ Add a task
         
         <input placeholder="new task" id="task">
 
-        <input type="submit" value="add" required />
+        <input type="submit" value="add" id="addButton" required />
 
     </form>
 </section>
@@ -27,8 +27,8 @@ Add a task
     <ul></ul>
 </section>
     
-<template>
-    <li>
+<template id="task-template">
+    <li class="task">
         
         <input type=checkbox name="checkbox" class="checkbox">
         <label id="item"></label>
@@ -38,6 +38,8 @@ Add a task
 </template>
 
     </main>
-    
+ 
+    <script src="app.js"></script>
+    <script src="app-test.js"></script>
 </body>
 </html>
