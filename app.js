@@ -1,9 +1,7 @@
-const form = document.querySelector("form");
-const addButton = document.querySelector("#addButton");
-const removeButton = document.querySelector("button");
+const addButton = document.querySelector("input[type='submit']");
 const ul = document.querySelector("ul");
-const task = document.querySelector("#task");
-const checkBox = document.querySelector(".checkbox");
+const taskInput = document.querySelector("#task-input");
+let counter = 0;
 
 // background API
 
@@ -14,17 +12,20 @@ function addItem(input) {
     return;
   }
   const template = document.querySelector("#task-template");
-  const templateClone = template.content.cloneNode(true);
+  let templateClone = template.content.cloneNode(true);
+
   ul.appendChild(templateClone);
 
-  let = listItems = document.querySelectorAll("li");
+  let listItems = document.querySelectorAll(".task");
   let lastItem = listItems[listItems.length - 1];
 
   let label = lastItem.querySelector("label");
 
   label.textContent = input;
+  lastItem.id = counter;
+  taskInput.value = "";
 
-  task.value = "";
+  return document.querySelectorAll("li");
 }
 
 // check item once completed
@@ -37,25 +38,36 @@ function check(item) {
 
 function removeItem(item) {
   ul.removeChild(item);
+  return ul;
 }
+
+// function filter() {
+//     let itemsToFilter = Array.from(document.querySelectorAll("li"));
+//     itemsToFilter.forEach((e) => { if (e.classList.contains("completed")) {
+//         e.classList.toggle("hidden");
+//     }
+// })
+// }
 
 //EVENT LISTENERS
 
-addButton.addEventListener("click", () => {
+addButton.addEventListener("click", (event) => {
   event.preventDefault();
   if ("content" in document.createElement("template")) {
-    addItem(task.value);
+    counter++;
+    addItem(taskInput.value);
   }
 });
 
 ul.addEventListener("click", (event) => {
-  item = event.target;
-  console.dir(item);
-  if (item.classList.contains("checkbox")) {
-    check(item);
-  } else {
-    if ((item.type = "button")) {
-      removeItem(item.parentElement);
-    }
+  const child = event.target;
+  if (child.classList.contains("remove-btn")) {
+    const parent = child.parentElement;
+    console.dir(parent)
+    removeItem(parent);
+  }
+  //console.dir(item);
+  if (child.classList.contains("checkbox")) {
+    check(child);
   }
 });

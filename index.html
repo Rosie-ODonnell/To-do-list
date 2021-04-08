@@ -16,12 +16,14 @@
 Add a task
         </label>
         
-        <input placeholder="new task" id="task" required />
+        <input placeholder="new task" id="task-input" required />
 
         <input type="submit" value="add" id="addButton" name="submit">
 
     </form>
 </section>
+
+<button id="filter">Filter out completed tasks</button>
 
 <section>
     <ul></ul>
@@ -31,8 +33,8 @@ Add a task
     <li class="task">
         
         <input type="checkbox" name="checkbox" class="checkbox">
-        <label id="item"></label>
-        <button>X</button>
+        <label></label>
+        <button class="remove-btn" name="remove-btn">X</button>
 
     </li>
 </template>

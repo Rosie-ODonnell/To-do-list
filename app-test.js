@@ -20,10 +20,10 @@ const equal = (actual, expected, message) => {
 
 // Add tasks to a list so that I can keep track of them
 
-test("item is successfully added to list when", () => {
+test("item is successfully added to list", () => {
   let input = "test item";
   let expectedLength = document.querySelectorAll("li").length + 1;
-  //let listItem = document.querySelector("li");
+ 
   addItem(input);
   let actual = Array.from(document.querySelectorAll("li"));
 
@@ -42,6 +42,7 @@ test("item shows checked when checkbox clicked", (item) => {
 });
 
 //Items deleted off my list when delete button clicked
+// to complete this test, need to assign id to new items using counter
 
 // test("when item is deleted, id cannot be found in list", () => {
 //   let expected = true;
